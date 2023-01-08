@@ -16,6 +16,7 @@ for (let i = 0; i < 10; i++) {
   }
 }
 
+// 根据输入的数字处理，得到相对应的随机数inputVlaue
 const getTicket = (ticketNum) => {
   const tempArr = [];
   if (ticketNum > 10) {
@@ -45,7 +46,9 @@ const getTicket = (ticketNum) => {
 };
 const submit = () => {
   console.log(44444, Number(ticketNumbers.value.value));
-  newArr.value = getTicket(Number(ticketNumbers.value.value));
+  let inputVlaue = Number(ticketNumbers.value.value);
+  // 根据输入的数字处理，得到相对应的随机数inputVlaue
+  newArr.value = getTicket(inputVlaue);
   console.log(6666666, arr.value.length);
   // 点亮
   newArr.value.forEach((item) => {
