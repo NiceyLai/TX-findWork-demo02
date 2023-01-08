@@ -34,11 +34,13 @@ const getTicket = (ticketNum) => {
   }
   for (let i = 1; i <= ticketNum; i++) {
     const temp = Math.floor(Math.random() * (190 - 1 + 1) + 1);
+    // Math.random()得到0-1不包括1的随机数，Math.random()+ 1 得到1-2，+1是为了包含大的数
+    // Math.random() * (最大的 - 最小的 + 1) + 最小的
     if (arr.value.indexOf(temp) === -1) {
       arr.value.push(temp);
       tempArr.push(temp);
     } else {
-      i--;
+      i--; // 要是重复了就重新来一次
       continue;
     }
   }
@@ -50,6 +52,7 @@ const submit = () => {
   // 根据输入的数字处理，得到相对应的随机数inputVlaue
   newArr.value = getTicket(inputVlaue);
   console.log(6666666, arr.value.length);
+  console.log(999999, arr.value);
   // 点亮
   newArr.value.forEach((item) => {
     // 选出的票遍历
