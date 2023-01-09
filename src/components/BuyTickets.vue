@@ -7,16 +7,14 @@ let maxSites = 28;
 const ticketNumbers = ref();
 let number = 190;
 for (let i = 0; i < 10; i++) {
-  // 行
-  maxSites -= 2; // 每一行的个数
-  sites[i] = new Array(); // 每一行都作为一个数组
+  maxSites -= 2;
+  sites[i] = new Array();
   for (let j = 0; j < maxSites + 2; j++) {
-    sites[i][j] = { isSelected: false, number }; // 赋值对象（拥有两个属性，用对象比较简单）
-    number--; // 每个格子一个number
+    sites[i][j] = { isSelected: false, number };
+    number--;
   }
 }
 
-// 根据输入的数字处理，得到相对应的随机数inputVlaue
 const getTicket = (ticketNum) => {
   const tempArr = [];
   if (ticketNum > 10) {
@@ -34,31 +32,22 @@ const getTicket = (ticketNum) => {
   }
   for (let i = 1; i <= ticketNum; i++) {
     const temp = Math.floor(Math.random() * (190 - 1 + 1) + 1);
-    // Math.random()得到0-1不包括1的随机数，Math.random()+ 1 得到1-2，+1是为了包含大的数
-    // Math.random() * (最大的 - 最小的 + 1) + 最小的
     if (arr.value.indexOf(temp) === -1) {
       arr.value.push(temp);
       tempArr.push(temp);
     } else {
-      i--; // 要是重复了就重新来一次
+      i--;
       continue;
     }
   }
   return tempArr;
 };
 const submit = () => {
-  console.log(44444, Number(ticketNumbers.value.value));
   let inputVlaue = Number(ticketNumbers.value.value);
-  // 根据输入的数字处理，得到相对应的随机数inputVlaue
   newArr.value = getTicket(inputVlaue);
-  console.log(6666666, arr.value.length);
-  console.log(999999, arr.value);
-  // 点亮
   newArr.value.forEach((item) => {
-    // 选出的票遍历
     sites.forEach((site) => {
       site.forEach((s) => {
-        // 在原有的二维数组遍历
         if (s.number === item) {
           s.isSelected = true;
         }
